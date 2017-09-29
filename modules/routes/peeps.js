@@ -8,15 +8,24 @@ var peepsSchema = new mongoose.Schema({
     name: String,
     location: String
 });
+
 var peepsModel = mongoose.model('peepsModel', peepsSchema);
+
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
+
 router.get('/', function (req, res) {
     // get and send back all the things
+
+    // peepsModel.find(function(err, data) {
+        
+    // });
+
     peepsModel.find().then(function (data) {
         res.send(data);
     });
 });
+
 router.post('/', function (req, res) {
     console.log('req.body.name: ' + req.body.name);
     // retrieved the req.body
